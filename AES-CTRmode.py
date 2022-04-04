@@ -8,9 +8,6 @@ start_time = time.time()
 key = os.urandom(32)
 iv = os.urandom(16)
 
-with open("context.txt", "rb") as file:
-    # read all file data
-    file_data = file.read()
 
 message = b"a secret message"
 
@@ -30,6 +27,6 @@ print("--- {:.2f}bytes/s ---".format(800000/execute_time))
 decryptor = cipher.decryptor()
 plaintext = decryptor.update(ciphertext) + decryptor.finalize()
 
-print ("-- ECB --")
+print ("-- CTR --")
 print ("Ciphertext is:", ciphertext)
 print ("Plaintext is:", plaintext)
